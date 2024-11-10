@@ -11,7 +11,7 @@ int main()
     // Ініціалізація GLFW
     if (!glfwInit())
     {
-        std::cerr << "Не вдалося ініціалізувати GLFW!\n";
+        std::cerr << "Failed to initialize GLFW\n";
         return -1;
     }
     glfwTerminate();
