@@ -1,6 +1,5 @@
 #include <glm/glm.hpp>
 #include <vector>
-//#include <glfw/glfw3.h>
 
 struct Vertex
 {
@@ -27,8 +26,17 @@ public:
 	void setViewMatrix(const glm::mat4& matrix);
 	const glm::mat4& getViewMatrix() const;
 
-	void setProjMatrix(const glm::mat4& matrix);
+	void setProjectionMatrix(const glm::mat4& matrix);
 	const glm::mat4& getProjMatrix() const;
+
+private:
+	enum class eRenderDataType
+	{
+		Triangles,
+		Lines
+	};
+
+	void renderData(const std::vector<Vertex>& vertices, eRenderDataType data);
 
 private:
 	glm::mat4 worldMatrix = glm::mat4(1.0f);

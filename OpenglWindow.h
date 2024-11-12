@@ -1,5 +1,3 @@
-#include "glad/glad.h"
-
 #include <glfw/glfw3.h>
 
 #include <functional>
@@ -31,6 +29,10 @@ enum class KeyCode
 {
 	UNKNOWN = -1,
 	Space = 32,
+	UP,
+	DOWN,
+	RIGHT,
+	LEFT,
 //.... repeats all key codes from the glfw header
 };
 

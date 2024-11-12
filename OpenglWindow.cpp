@@ -1,5 +1,7 @@
 #include "OpenglWindow.h"
 
+#include "glad/glad.h"
+
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	OpenglWindow* wnd = reinterpret_cast<OpenglWindow*>(glfwGetWindowUserPointer(window));
@@ -38,6 +40,19 @@ OpenglWindow::OpenglWindow(const std::string& title, uint32_t width, uint32_t he
 	: m_width(width)
 	, m_height(height)
 {
+	if (glfwInit() == GL_FALSE)
+	{
+		const char* errorDesc = new char[256];
+		int code = glfwGetError(&errorDesc);
+		if (code == GLFW_NOT_INITIALIZED)
+		{
+			int a = 0;
+			++a;
+		}
+		glfwTerminate();
+		exit(EXIT_FAILURE);
+	}
+	glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 	m_ptrHandle = glfwCreateWindow(width, height, title.data(), nullptr, nullptr);
 	glfwMakeContextCurrent(m_ptrHandle);
 
