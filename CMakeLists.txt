@@ -10,16 +10,22 @@ find_package(glfw3 CONFIG REQUIRED)
 # Додавання виконуваного файлу
 add_executable(MeshViewer
     main.cpp
-    OpenglWindow.h
-    OpenglWindow.cpp
+	Vertex.h
+    ViewerWindow.h
+    ViewerWindow.cpp
     OpenglRenderSystem.h
     OpenglRenderSystem.cpp
+	GeometryPrimitives.h
+	GeometryPrimitives.cpp
     glad.c)
 
 # Підключення бібліотек
 target_link_libraries(MeshViewer PRIVATE glfw)
 
+# Підключення папки із проектом, як джерела де шукати *.h\*.hpp файли
 target_include_directories(MeshViewer PRIVATE ${CMAKE_SOURCE_DIR})
 
+# Додавання директиви GLFW_INCLUDE_NONE до проекту,
+# що дозволить не використовувати вбудовані функції OpenGL бібліотеки GLFW, оскільки в нас є glad
 target_compile_definitions(MeshViewer PRIVATE GLFW_INCLUDE_NONE)
 

@@ -1,12 +1,7 @@
-#include <glm/glm.hpp>
-#include <vector>
+#pragma once
 
-struct Vertex
-{
-	glm::vec3 position;
-	glm::vec3 normal;
-	glm::vec3 color;
-};
+#include "Vertex.h"
+#include <vector>
 
 class OpenglRenderSystem
 {

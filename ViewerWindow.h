@@ -1,3 +1,5 @@
+#pragma once
+
 #include <glfw/glfw3.h>
 
 #include <functional>
@@ -29,14 +31,14 @@ enum class KeyCode
 {
 	UNKNOWN = -1,
 	Space = 32,
-	UP,
-	DOWN,
-	RIGHT,
-	LEFT,
+	UP = 265,
+	DOWN = 264,
+	RIGHT = 262,
+	LEFT = 263,
 //.... repeats all key codes from the glfw header
 };
 
-class OpenglWindow
+class ViewerWindow
 {
 	friend void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 	friend void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
@@ -49,8 +51,8 @@ public:
 	using MouseCallback = std::function<void(ButtonCode, Action, Modifier, double, double)>;
 	using ScrollCallback = std::function<void(double, double)>;
 
-	OpenglWindow(const std::string& title, uint32_t width, uint32_t height);
-	~OpenglWindow();
+	ViewerWindow(const std::string& title, uint32_t width, uint32_t height);
+	~ViewerWindow();
 
 	uint32_t getWidth() const;
 	uint32_t getHeight() const;
